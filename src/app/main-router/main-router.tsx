@@ -12,7 +12,7 @@ export const MainRouter: React.FC = () => {
       <main className="p4">
         <Routes>
           <Route path="/" element={<Navigate to="/cards" replace />} />
-          <Route path="/cards" element={<Cards />} />
+          <Route path="/cards/*" element={<Cards />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

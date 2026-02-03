@@ -3,17 +3,15 @@ import { useEffect, useState } from "react";
 import cn from "classnames";
 import classes from "./card-list.module.scss";
 import CardListItemComponent from "@/components/card-list-item";
-import type { CardListProps } from "@/views/cards/card-list/card-list.model.ts";
 import type { CardListItem } from "@/types/card.ts";
 import { cardsApi } from "@/services/cards-service.ts";
 import { useGlobalLoader } from "@/hooks/useGlobalLoader.ts";
+import { useNavigate } from "react-router-dom";
 
-export const CardList: React.FC<CardListProps> = ({
-  className,
-  onItemClick,
-}) => {
+export const CardList: React.FC = () => {
   const [items, setItems] = useState<CardListItem[]>([]);
   const loader = useGlobalLoader();
+  const navigate = useNavigate();
 
   useEffect(() => {
     loader.track(cardsApi.getCardsList()).then((cards) => setItems(cards));
@@ -30,10 +28,13 @@ export const CardList: React.FC<CardListProps> = ({
           collezioni. Clicca sui tuoi Pokémon per scoprire di più su di loro!
         </p>
       </div>
-      <ul className={cn(classes.grid, className)} aria-label="Cards">
+      <ul className={cn(classes.grid)} aria-label="Cards">
         {items.map((item) => (
           <li key={item.id} className={classes.cell}>
-            <CardListItemComponent item={item} onClick={onItemClick} />
+            <CardListItemComponent
+              item={item}
+              onClick={(item: CardListItem) => navigate(`/cards/${item.id}`)}
+            />
           </li>
         ))}
       </ul>
