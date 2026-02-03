@@ -10,11 +10,15 @@ import { useNavigate } from "react-router-dom";
 
 export const CardList: React.FC = () => {
   const [items, setItems] = useState<CardListItem[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const loader = useGlobalLoader();
   const navigate = useNavigate();
 
   useEffect(() => {
-    loader.track(cardsApi.getCardsList()).then((cards) => setItems(cards));
+    loader
+      .track(cardsApi.getCardsList())
+      .then((cards) => setItems(cards))
+      .finally(() => setLoaded(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,16 +32,25 @@ export const CardList: React.FC = () => {
           collezioni. Clicca sui tuoi Pokémon per scoprire di più su di loro!
         </p>
       </div>
-      <ul className={cn(classes.grid)} aria-label="Cards">
-        {items.map((item) => (
-          <li key={item.id} className={classes.cell}>
-            <CardListItemComponent
-              item={item}
-              onClick={(item: CardListItem) => navigate(`/cards/${item.id}`)}
-            />
-          </li>
-        ))}
-      </ul>
+      {loaded && items.length === 0 ? (
+        <div className={classes.emptyStateCard}>
+          <p>
+            Non sono stati trovati risultati per questa pagina, ti invitiamo a
+            riprovare.
+          </p>
+        </div>
+      ) : (
+        <ul className={cn(classes.grid)} aria-label="Cards">
+          {items.map((item) => (
+            <li key={item.id} className={classes.cell}>
+              <CardListItemComponent
+                item={item}
+                onClick={(item: CardListItem) => navigate(`/cards/${item.id}`)}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
