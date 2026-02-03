@@ -1,0 +1,28 @@
+@use "./typography" as *;
+@use "./colors" as *;
+//@import "tailwindcss";
+
+@tailwind utilities;
+
+:root {
+    font-family: $font-family-primary,
+    Roboto, Arial, sans-serif;
+    line-height: 1.5;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}

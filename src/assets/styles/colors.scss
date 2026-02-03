@@ -1,0 +1,15 @@
+$color-primary: #101A2E;
+$color-secondary: #D9694A;
+
+$color-danger: #8C0202;
+$color-white: #FFFFFF;
+$color-dark-5: #101A2E0D;
+$color-neutral: #9BA8BA;
+
+:export {
+    colorPrimary: $color-primary;
+    colorDanger: $color-danger;
+    colorWhite: $color-white;
+    colorNeutral: $color-neutral;
+    colorDark5: $color-dark-5;
+}
