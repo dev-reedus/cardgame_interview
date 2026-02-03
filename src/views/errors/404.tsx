@@ -15,7 +15,7 @@ export const NotFoundPage: React.FC = () => {
         Sembra che ci sia stato un problema, torna all'homepage.
       </p>
 
-      <Link to="/" className={classes.link}>
+      <Link to="/" className={classes.button}>
         <Button>VAI ALLA HOME</Button>
       </Link>
     </div>

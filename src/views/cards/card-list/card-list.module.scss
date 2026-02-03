@@ -1,0 +1,66 @@
+@use "@/assets/styles/units" as *;
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/borders" as *;
+
+.listWrapper {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: $unit-32;
+    padding: $unit-36 $unit-172 0;
+}
+
+
+.pageHeaderDescription {
+    padding: $unit-36;
+    border-radius: $pm-border-radius-m;
+    background-color: $color-white;
+
+    h2, p {
+        margin: 0;
+        line-height: 1.2;
+    }
+}
+
+.grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: grid;
+    gap: $unit-16;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cell {
+    margin: 0;
+}
+
+/* Responsive media query */
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .listWrapper {
+        padding: $unit-120;
+    }
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .listWrapper {
+        padding: $unit-82;
+    }
+}
+
+@media (max-width: 560px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .listWrapper {
+        padding: $unit-24;
+    }
+}

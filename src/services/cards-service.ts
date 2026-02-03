@@ -1,11 +1,5 @@
 import { jsonFetch } from "./utils.ts";
-
-export type CardListItem = {
-  id: string;
-  name: string;
-  shortDesc: string;
-  image: string;
-};
+import type { CardListItem } from "@/types/card.ts";
 
 export type CardDetail = CardListItem & {
   longDesc: string;
