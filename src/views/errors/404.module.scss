@@ -1,0 +1,32 @@
+@use "@/assets/styles/typography" as *;
+@use "@/assets/styles/units" as *;
+
+.wrapper {
+    min-height: 100%;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.image {
+    width: min(500px, 90vw);
+    height: auto;
+    display: block;
+}
+
+h1 {
+    line-height: $line-height-38;
+    margin: 0;
+}
+
+.text {
+    max-width: 48ch;
+    margin: 0;
+    font-size: $unit-16;
+}
+
+.link {
+    margin-top: $unit-30;
+    text-decoration: none;
+}
