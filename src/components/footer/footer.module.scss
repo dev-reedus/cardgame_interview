@@ -1,0 +1,17 @@
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/units" as *;
+
+.footer {
+    background: $color-dark-5;
+
+    height: 49px;
+
+    display: grid;
+    place-items: center;
+}
+
+.center {
+    line-height: 1.2;
+    font-size: $unit-14;
+    font-weight: 400;
+}

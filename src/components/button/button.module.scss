@@ -1,0 +1,87 @@
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/typography" as *;
+@use "@/assets/styles/borders" as *;
+@use "@/assets/styles/units" as *;
+
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $unit-8;
+    color: $color-white;
+    cursor: pointer;
+    position: relative;
+
+    border-radius: $pm-border-radius-3xl;
+    font-weight: $font-weight-semibold;
+    transition: background-color 150ms ease, color 150ms ease, opacity 150ms ease;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        transition: opacity 150ms ease;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    &:focus-visible {
+        outline: $unit-2 solid currentColor;
+        outline-offset: $unit-2;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+
+    &:focus-visible::after {
+        opacity: 1;
+    }
+
+    &:active::after {
+        opacity: 1;
+    }
+
+    &:disabled::after {
+        opacity: 0;
+    }
+}
+
+.primary {
+    background: $color-primary;
+}
+
+
+.secondary {
+    background: $color-secondary;
+}
+
+.danger {
+    background: $color-danger;
+}
+
+.sm {
+    height: $unit-32;
+    padding: 0 $unit-16;
+    font-size: $unit-14;
+}
+
+.md {
+    height: $unit-40;
+    padding: 0 $unit-32;
+    font-size: $unit-14;
+}
+
+.lg {
+    height: $unit-48;
+    padding: 0 $unit-40;
+    font-size: $unit-16;
+}

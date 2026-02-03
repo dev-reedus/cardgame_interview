@@ -1,0 +1,30 @@
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/units" as *;
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    background: $color-white;
+    max-height: $unit-134;
+    padding: $unit-16 0;
+
+    box-shadow: -$unit-2 $unit-4 $unit-6 0px $color-dark-5;
+
+    &.sm {
+        height: 83px;
+    }
+}
+
+.center {
+    height: 100%;
+    place-items: center;
+}
+
+.logo {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    display: block;
+}
