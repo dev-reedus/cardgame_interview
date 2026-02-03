@@ -6,15 +6,18 @@ import CardListItemComponent from "@/components/card-list-item";
 import type { CardListProps } from "@/views/cards/card-list/card-list.model.ts";
 import type { CardListItem } from "@/types/card.ts";
 import { cardsApi } from "@/services/cards-service.ts";
+import { useGlobalLoader } from "@/hooks/useGlobalLoader.ts";
 
 export const CardList: React.FC<CardListProps> = ({
   className,
   onItemClick,
 }) => {
   const [items, setItems] = useState<CardListItem[]>([]);
+  const loader = useGlobalLoader();
 
   useEffect(() => {
-    cardsApi.getCardsList().then((cards) => setItems(cards));
+    loader.track(cardsApi.getCardsList()).then((cards) => setItems(cards));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

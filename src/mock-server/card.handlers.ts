@@ -1,6 +1,6 @@
 import { type CardListItem } from "../types/card.ts";
 import type { Job } from "../types/job.ts";
-import { http, HttpResponse, type PathParams } from "msw";
+import { delay, http, HttpResponse, type PathParams } from "msw";
 import { makeJobId } from "./job.handlers.ts";
 import { cards, jobs } from "./initial-data.ts";
 
@@ -12,12 +12,17 @@ const listItems = (): CardListItem[] =>
     image_url,
   }));
 
+const randomDelay = () => Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
+
 export const cardHandlers = [
-  http.get("/api/items", () => {
+  http.get("/api/items", async () => {
+    await delay(randomDelay());
     return HttpResponse.json(listItems(), { status: 200 });
   }),
 
-  http.get<PathParams<"id">>("/api/items/:id", ({ params }) => {
+  http.get<PathParams<"id">>("/api/items/:id", async ({ params }) => {
+    await delay(randomDelay());
+
     const { id } = params;
     const found = cards.find((c) => c.id === id);
     if (!found) {
