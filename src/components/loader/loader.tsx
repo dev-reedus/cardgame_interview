@@ -1,8 +1,7 @@
 import React from "react";
 import classes from "./loader.module.scss";
-
-import loaderSvg from "../../assets/icons/loader.svg";
 import type { LoaderProps } from "./loader.model.ts";
+import { Icon } from "@/components/icon";
 
 export const Loader: React.FC<LoaderProps> = ({
   open,
@@ -19,7 +18,9 @@ export const Loader: React.FC<LoaderProps> = ({
       aria-label={label}
     >
       <div className={classes.panel}>
-        <img className={classes.spinner} src={loaderSvg} alt="" />
+        <div className={classes.spinner}>
+          <Icon name={"loader"} />
+        </div>
       </div>
     </div>
   );
