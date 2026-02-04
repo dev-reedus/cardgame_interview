@@ -1,6 +1,6 @@
-@use '@/assets/styles/colors';
-@use '@/assets/styles/units';
-@use '@/assets/styles/typography';
+@use '@/assets/styles/colors' as *;
+@use '@/assets/styles/units' as *;
+@use '@/assets/styles/typography' as *;
 
 .backdrop {
     position: fixed;

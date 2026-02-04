@@ -4,7 +4,7 @@ import classes from "./card-list-item.module.scss";
 import type { CardListItemProps } from "./card-list-item.model.ts";
 import { resolveImageFromAssets } from "@/app/images-loader/images-loader.ts";
 
-export const CardListItem: React.FC<CardListItemProps> = ({
+const CardListItem: React.FC<CardListItemProps> = ({
   item,
   className,
   imageWrapperClassName,

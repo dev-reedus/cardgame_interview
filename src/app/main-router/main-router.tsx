@@ -5,7 +5,7 @@ import Footer from "../../components/footer";
 import NotFoundPage from "../../views/errors/404.tsx";
 import Cards from "../../views/cards/cards.tsx";
 
-export const MainRouter: React.FC = () => {
+const MainRouter: React.FC = () => {
   return (
     <div className={classes.mainRouterWrapper}>
       <Header />

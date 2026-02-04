@@ -3,11 +3,7 @@ import classes from "./card-stat-item.module.scss";
 import type { StatItemProps } from "./cars-stat-item.model.ts";
 import { Icon } from "@/components/icon";
 
-export const CardStatItem: React.FC<StatItemProps> = ({
-  label,
-  value,
-  icon,
-}) => {
+const CardStatItem: React.FC<StatItemProps> = ({ label, value, icon }) => {
   return (
     <div className={classes.item}>
       {icon && (

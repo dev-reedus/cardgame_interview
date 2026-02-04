@@ -4,7 +4,7 @@ import type { ButtonProps } from "./button.models.ts";
 import cn from "classnames";
 import { Icon } from "@/components/icon";
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
@@ -48,7 +48,5 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
-
-Button.displayName = "Button";
 
 export default Button;

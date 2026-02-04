@@ -5,7 +5,7 @@ import logo from "@/assets/images/logo.png";
 import { useMatch } from "react-router-dom";
 import cn from "classnames";
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   const match = useMatch("/cards/:id");
   const id = match?.params.id;
   const size = id ? "sm" : "md";

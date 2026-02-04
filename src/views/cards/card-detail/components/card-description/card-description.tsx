@@ -4,7 +4,7 @@ import type { CardDescriptionProps } from "@/views/cards/card-detail/components/
 import Button from "@/components/button";
 import { useNavigate } from "react-router-dom";
 
-export const CardDescription: React.FC<CardDescriptionProps> = ({
+const CardDescription: React.FC<CardDescriptionProps> = ({
   subtitle,
   name,
   html,

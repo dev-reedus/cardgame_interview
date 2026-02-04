@@ -9,7 +9,7 @@ import CardBody from "./components/card-body";
 import CardFooter from "./components/card-footer";
 import cn from "classnames";
 
-export const CardPreviewPanel: React.FC<CardPreviewPanelProps> = ({
+const CardPreviewPanel: React.FC<CardPreviewPanelProps> = ({
   card,
   className,
 }) => {

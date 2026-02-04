@@ -8,7 +8,7 @@ import { cardsApi } from "@/services/cards-service.ts";
 import { useGlobalLoader } from "@/hooks/useGlobalLoader.ts";
 import { useNavigate } from "react-router-dom";
 
-export const CardList: React.FC = () => {
+const CardList: React.FC = () => {
   const [items, setItems] = useState<CardListItem[]>([]);
   const [loaded, setLoaded] = useState(false);
   const loader = useGlobalLoader();

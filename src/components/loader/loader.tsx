@@ -3,7 +3,7 @@ import classes from "./loader.module.scss";
 import type { LoaderProps } from "./loader.model.ts";
 import { Icon } from "@/components/icon";
 
-export const Loader: React.FC<LoaderProps> = ({
+const Loader: React.FC<LoaderProps> = ({
   open,
   label = "Loading…",
   className,

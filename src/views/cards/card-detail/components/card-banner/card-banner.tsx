@@ -3,7 +3,7 @@ import classes from "./card-banner.module.scss";
 import { resolveImageFromAssets } from "@/app/images-loader/images-loader.ts";
 import type { CardBannerProps } from "./card-banner.model.ts";
 
-export const CardBanner: React.FC<CardBannerProps> = ({ imageUrl, name }) => {
+const CardBanner: React.FC<CardBannerProps> = ({ imageUrl, name }) => {
   const src = resolveImageFromAssets(imageUrl, "logo.png");
 
   return (

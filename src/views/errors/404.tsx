@@ -5,7 +5,7 @@ import Button from "../../components/button";
 import classes from "./404.module.scss";
 import image404 from "@/assets/images/404.png";
 
-export const NotFoundPage: React.FC = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <div className={classes.wrapper}>
       <img className={classes.image} src={image404} alt="404" />
