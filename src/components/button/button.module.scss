@@ -1,7 +1,7 @@
-@use "@/assets/styles/colors" as *;
-@use "@/assets/styles/typography" as *;
-@use "@/assets/styles/borders" as *;
-@use "@/assets/styles/units" as *;
+@use '@/assets/styles/colors' as *;
+@use '@/assets/styles/typography' as *;
+@use '@/assets/styles/borders' as *;
+@use '@/assets/styles/units' as *;
 
 
 .button {
@@ -12,6 +12,7 @@
     color: $color-white;
     cursor: pointer;
     position: relative;
+    border: none;
 
     border-radius: $pm-border-radius-3xl;
     font-weight: $font-weight-semibold;
@@ -52,6 +53,31 @@
 
     &:disabled::after {
         opacity: 0;
+    }
+}
+
+.content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $unit-8;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    height: $unit-24;
+    width: $unit-24;
+
+    svg {
+        display: block;
     }
 }
 
