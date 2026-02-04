@@ -9,7 +9,7 @@ export const MainRouter: React.FC = () => {
   return (
     <div className={classes.mainRouterWrapper}>
       <Header />
-      <main className="p4">
+      <main>
         <Routes>
           <Route path="/" element={<Navigate to="/cards" replace />} />
           <Route path="/cards/*" element={<Cards />} />
