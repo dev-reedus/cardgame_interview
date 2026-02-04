@@ -2,10 +2,15 @@ import classes from "./card-header.module.scss";
 import Badge from "@/components/badge";
 import * as React from "react";
 import type { CardHeaderProps } from "./card-header.model.ts";
+import cn from "classnames";
 
-const CardHeader: React.FC<CardHeaderProps> = ({ cardNumber, typology }) => {
+const CardHeader: React.FC<CardHeaderProps> = ({
+  cardNumber,
+  typology,
+  variant = "default",
+}) => {
   return (
-    <div className={classes.headerRow}>
+    <div className={cn(classes.headerRow, classes[variant])}>
       <span className={classes.cardNumber}>N. {cardNumber}</span>
       {typology && (
         <Badge

@@ -4,4 +4,5 @@ export type StatItemProps = {
   icon?: IconName;
   label?: string;
   value: React.ReactNode;
+  variant?: "default" | "danger" | "expired";
 };

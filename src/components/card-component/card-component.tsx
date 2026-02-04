@@ -8,19 +8,39 @@ import CardHeader from "./components/card-header";
 import CardBody from "./components/card-body";
 import CardFooter from "./components/card-footer";
 import cn from "classnames";
+import { Icon } from "@/components/icon";
 
 const CardPreviewPanel: React.FC<CardPreviewPanelProps> = ({
   card,
   className,
 }) => {
   const src = resolveImageFromAssets(card.image_url, "logo.png");
+  const cardStatus = () => {
+    if (card.health_points === 0) return "expired";
+
+    if (card.health_points <= 20) return "danger";
+
+    return "default";
+  };
 
   return (
     <div className={cn(classes.panel, className)}>
-      <CardHeader cardNumber={card.card_number} typology={card.typology} />
+      <CardHeader
+        cardNumber={card.card_number}
+        typology={card.typology}
+        variant={cardStatus()}
+      />
 
       <div className={classes.imageWrap}>
         <img className={classes.image} src={src} alt={card.name} />
+
+        {cardStatus() === "expired" && (
+          <div className={classes.expiredOverlay} aria-hidden="true">
+            <span className={classes.expiredIcon}>
+              <Icon name="skull" title="Expired" />
+            </span>
+          </div>
+        )}
       </div>
 
       <CardBody name={card.name} description={card.short_description} />
@@ -32,7 +52,12 @@ const CardPreviewPanel: React.FC<CardPreviewPanelProps> = ({
           label="Vul."
           value={card.vulnerability.value}
         />
-        <CardStatItem icon="heart" label="Ps." value={card.health_points} />
+        <CardStatItem
+          icon="heart"
+          label="Ps."
+          value={card.health_points}
+          variant={cardStatus()}
+        />
       </div>
 
       <CardFooter

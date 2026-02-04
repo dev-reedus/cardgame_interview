@@ -29,16 +29,41 @@
         }
     }
 
+    .expiredOverlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: rgba($color-primary, 0.75);
+        pointer-events: none;
+    }
+
+    .expiredIcon {
+        width: $unit-80;
+        height: $unit-80;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: $color-white;
+        background-color: $color-white-30;
+
+        :global(svg) {
+            width: $unit-44;
+            height: $unit-44;
+            display: block;
+        }
+
+        :global(svg, svg *) {
+            fill: currentColor;
+        }
+    }
+
     .statsBar {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: $unit-16;
         padding: 0 37px;
         background-color: $color-dark-5;
-    }
-
-    .cta {
-        margin-top: $unit-2;
     }
 }
 

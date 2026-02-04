@@ -9,6 +9,14 @@
     background-color: $color-primary;
     padding: $unit-8 $unit-16;
 
+    &.danger {
+        background-color: $color-danger;
+    }
+
+    &.expired {
+        background-color: $color-neutral;
+    }
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;

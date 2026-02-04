@@ -2,10 +2,16 @@ import * as React from "react";
 import classes from "./card-stat-item.module.scss";
 import type { StatItemProps } from "./cars-stat-item.model.ts";
 import { Icon } from "@/components/icon";
+import cn from "classnames";
 
-const CardStatItem: React.FC<StatItemProps> = ({ label, value, icon }) => {
+const CardStatItem: React.FC<StatItemProps> = ({
+  label,
+  value,
+  icon,
+  variant = "default",
+}) => {
   return (
-    <div className={classes.item}>
+    <div className={cn(classes.item, classes[variant])}>
       {icon && (
         <span className={classes.iconContainer}>
           <Icon name={icon} />
