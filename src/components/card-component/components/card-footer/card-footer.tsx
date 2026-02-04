@@ -26,7 +26,7 @@ const CardFooter: React.FC<CardFooterProps> = ({
     <div className={classes.footerRow}>
       <span className={classes.cardRarity}>{getRarityLabel()}</span>
       <div className={classes.badgeContainer}>
-        {typology && (
+        {typology && energy?.icon_name !== typology.icon_name && (
           <Badge
             className={classes.customBadge}
             variant="filled"
