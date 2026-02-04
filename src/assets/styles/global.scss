@@ -1,8 +1,5 @@
 @use "./typography" as *;
 @use "./colors" as *;
-//@import "tailwindcss";
-
-@tailwind utilities;
 
 :root {
     font-family: $font-family-primary,
