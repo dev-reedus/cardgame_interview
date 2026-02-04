@@ -1,0 +1,30 @@
+@use "@/assets/styles/units" as *;
+@use "@/assets/styles/typography" as *;
+
+
+.cardBody {
+    padding: $unit-16;
+    display: flex;
+    text-align: start;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .titleRow {
+        .title {
+            margin: 0;
+            font-size: $font-size-16;
+            font-weight: $font-weight-bold;
+            line-height: 1.2;
+        }
+    }
+
+    .shortDescription {
+        font-size: $font-size-14;
+        line-height: 1.2;
+        font-weight: $font-weight-regular;
+
+        p {
+            margin: 0;
+        }
+    }
+}
