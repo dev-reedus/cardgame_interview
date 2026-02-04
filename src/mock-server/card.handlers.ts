@@ -25,7 +25,8 @@ export const cardHandlers = [
 
     const { id } = params;
     const found = cards.find((c) => c.id === id);
-    if (!found) {
+    // little mock to handle card not found error
+    if (!found || found.name === "Magikarp") {
       return HttpResponse.json({ message: "Card not found" }, { status: 404 });
     }
     return HttpResponse.json(found, { status: 200 });

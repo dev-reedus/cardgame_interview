@@ -1,0 +1,65 @@
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/units" as *;
+@use "@/assets/styles/typography" as *;
+@use "@/assets/styles/borders" as *;
+
+.bottomSection {
+    margin-top: $unit-20;
+    border-radius: $pm-border-radius-xl;
+    padding: $unit-32;
+    background-color: $color-gray-5;
+
+    .bottomGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $unit-32;
+
+        .bottomCol {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+
+            &.bottomColFull {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .cardsContainer {
+            display: flex;
+            flex-direction: row;
+            gap: $unit-32;
+            flex: 1;
+        }
+
+        .bottomTitle {
+            text-align: start;
+            margin: 0 0 $unit-10;
+            font-size: $font-size-16;
+            font-weight: $font-weight-bold;
+            color: $color-primary;
+            line-height: 1.2;
+        }
+
+        .bottomPlaceholder {
+            height: 120px;
+            border-radius: $pm-border-radius-xl;
+            background: rgba(15, 23, 42, 0.04);
+        }
+    }
+
+    @media (max-width: 900px) {
+
+        .bottomGrid {
+            grid-template-columns: 1fr;
+
+            .cardsContainer {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+}
+
+.customImageWrapper {
+    height: clamp(180px, 30vw, 230px);
+}

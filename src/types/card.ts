@@ -40,6 +40,7 @@ export type CardEnergy = {
 export type CardVulnerability = {
   value: number;
   icon_url: string;
+  icon_name: IconName;
 };
 
 export const Rarity = {

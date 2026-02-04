@@ -10,23 +10,31 @@ export const CardListItem: React.FC<CardListItemProps> = ({
   imageWrapperClassName,
   onClick,
 }) => {
+  const isInteractable = typeof onClick === "function";
   const handleClick = () => onClick?.(item);
 
   const imageSrc = resolveImageFromAssets(item.image_url, "logo.png");
 
   return (
     <article
-      className={cn(classes.card, className)}
+      className={cn(
+        classes.card,
+        { [classes.cardNonInteractable]: !isInteractable },
+        className,
+      )}
       onClick={handleClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
-      onKeyDown={(e) => {
-        if (!onClick) return;
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          handleClick();
-        }
-      }}
+      onKeyDown={
+        isInteractable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleClick();
+              }
+            }
+          : undefined
+      }
       aria-label={item.name}
     >
       <div className={cn(classes.imageWrap, imageWrapperClassName)}>

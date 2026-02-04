@@ -45,14 +45,6 @@
                 margin-bottom: $unit-24;
             }
         }
-
-        .bottomSection {
-            margin-top: $unit-20;
-            border-radius: $pm-border-radius-xl;
-            padding: $unit-32;
-            background-color: $color-gray-5;
-
-        }
     }
 
     .mainGrid {
@@ -87,33 +79,9 @@
         }
     }
 
-    .bottomGrid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: $unit-32;
-
-        .bottomTitle {
-            text-align: start;
-            margin: 0 0 $unit-10;
-            font-size: $font-size-16;
-            font-weight: $font-weight-bold;
-            color: $color-primary;
-            line-height: 1.2;
-        }
-
-        .bottomPlaceholder {
-            height: 120px;
-            border-radius: $pm-border-radius-xl;
-            background: rgba(15, 23, 42, 0.04);
-        }
-    }
 
     @media (max-width: 900px) {
         .mainGrid {
-            grid-template-columns: 1fr;
-        }
-
-        .bottomGrid {
             grid-template-columns: 1fr;
         }
     }

@@ -9,8 +9,8 @@ import Button from "@/components/button";
 import cn from "classnames";
 import CardBanner from "./components/card-banner";
 import CardComponent from "@/components/card-component";
-import CardListItemComponent from "@/components/card-list-item";
 import CardDescription from "./components/card-description";
+import BottomSection from "@/views/cards/card-detail/components/bottom-section";
 
 const CardDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,9 +22,15 @@ const CardDetail: React.FC = () => {
   useEffect(() => {
     if (!id) return;
 
-    loader.track(cardsApi.getCard(id)).then((detail) => {
-      setCard(detail);
-    });
+    loader
+      .track(cardsApi.getCard(id))
+      .then((detail) => {
+        setCard(detail);
+      })
+      .catch(() => {
+        setCard(null);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const hasEvolutions = !!card?.extra_details.evolutions.length;
@@ -89,35 +95,10 @@ const CardDetail: React.FC = () => {
           </div>
 
           {(hasAllies || hasEvolutions) && (
-            <section
-              className={classes.bottomSection}
-              aria-label="Related cards"
-            >
-              <div className={classes.bottomGrid}>
-                {hasEvolutions && (
-                  <div className={classes.bottomCol}>
-                    <h3 className={classes.bottomTitle}>Evoluzioni</h3>
-                    {card.extra_details.evolutions[0] && (
-                      <CardListItemComponent
-                        imageWrapperClassName={classes.customImageWrapper}
-                        item={card.extra_details.evolutions[0]}
-                      />
-                    )}
-                  </div>
-                )}
-                {hasAllies && (
-                  <div className={classes.bottomCol}>
-                    <h3 className={classes.bottomTitle}>Alleati</h3>
-                    {card.extra_details.allies[0] && (
-                      <CardListItemComponent
-                        imageWrapperClassName={classes.customImageWrapper}
-                        item={card.extra_details.allies[0]}
-                      />
-                    )}
-                  </div>
-                )}
-              </div>
-            </section>
+            <BottomSection
+              allies={card.extra_details.allies}
+              evolutions={card.extra_details.evolutions}
+            />
           )}
         </div>
       </div>

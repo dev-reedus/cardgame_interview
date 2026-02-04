@@ -28,7 +28,7 @@ export const CardPreviewPanel: React.FC<CardPreviewPanelProps> = ({
       <div className={classes.statsBar} aria-label="Card stats">
         <CardStatItem icon="equalizer" label="Lv." value={card.level} />
         <CardStatItem
-          icon="leaf"
+          icon={card.vulnerability.icon_name}
           label="Vul."
           value={card.vulnerability.value}
         />
