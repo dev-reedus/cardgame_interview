@@ -1,0 +1,124 @@
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/units" as *;
+@use "@/assets/styles/typography" as *;
+@use "@/assets/styles/borders" as *;
+
+
+.page {
+    background-color: $color-gray-5;
+    position: relative;
+
+    &.emptyState {
+        background-color: unset;
+    }
+
+
+    .containerWrapper {
+        width: 100%;
+        margin-top: -75px;
+        position: relative;
+        z-index: 1;
+
+    }
+
+    .container {
+        border-radius: $pm-border-radius-xl;
+        box-sizing: border-box;
+        z-index: 30;
+        max-width: 1088px;
+        margin: 0 auto;
+        padding: $unit-40 $unit-80;
+        background-color: $color-white;
+
+        &.emptyState {
+            border-radius: 0 0 $pm-border-radius-xl $pm-border-radius-xl;
+            text-align: start;
+
+            .emptyStateCard {
+                background: $color-white;
+                border-radius: $pm-border-radius-xl;
+                padding: $unit-18;
+                border: 1px solid $color-gray-5;
+            }
+
+            .backButton {
+                margin-bottom: $unit-24;
+            }
+        }
+
+        .bottomSection {
+            margin-top: $unit-20;
+            border-radius: $pm-border-radius-xl;
+            padding: $unit-32;
+            background-color: $color-gray-5;
+
+        }
+    }
+
+    .mainGrid {
+        margin-top: $unit-16;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $unit-80;
+        align-items: start;
+
+        .cardContainer {
+            display: flex;
+            flex-direction: column;
+            gap: $unit-10;
+            background-color: $color-gray-5;
+            padding: $unit-64;
+            border-radius: $pm-border-radius-m;
+
+            .progressBarContainer {
+
+                .placeholder {
+                    font-size: $font-size-18;
+                    font-weight: $font-weight-regular;
+                    line-height: 1.2;
+                }
+            }
+
+            .buttonContainer {
+                .button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .bottomGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $unit-32;
+
+        .bottomTitle {
+            text-align: start;
+            margin: 0 0 $unit-10;
+            font-size: $font-size-16;
+            font-weight: $font-weight-bold;
+            color: $color-primary;
+            line-height: 1.2;
+        }
+
+        .bottomPlaceholder {
+            height: 120px;
+            border-radius: $pm-border-radius-xl;
+            background: rgba(15, 23, 42, 0.04);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .mainGrid {
+            grid-template-columns: 1fr;
+        }
+
+        .bottomGrid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .customImageWrapper {
+        height: clamp(180px, 30vw, 230px);
+    }
+}

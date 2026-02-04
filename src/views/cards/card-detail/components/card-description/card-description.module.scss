@@ -1,0 +1,34 @@
+@use "@/assets/styles/colors" as *;
+@use "@/assets/styles/typography" as *;
+@use "@/assets/styles/borders" as *;
+@use "@/assets/styles/units" as *;
+
+
+.wrap {
+    display: grid;
+    gap: 25px;
+    text-align: start;
+}
+
+h2 {
+    margin: $unit-5 0 0 0;
+}
+
+.subtitle {
+    color: $color-neutral;
+}
+
+.backButton {
+    border-radius: $pm-border-radius-3xl;
+}
+
+.description {
+    color: $color-primary;
+    line-height: 1.2;
+    font-size: $font-size-18;
+    font-weight: $font-weight-regular;
+
+    ul {
+        margin: 15px 0;
+    }
+}
