@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/button";
+import Button from "../../components/button";
 
 import classes from "./404.module.scss";
 import image404 from "@/assets/images/404.png";
