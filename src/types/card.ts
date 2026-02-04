@@ -1,3 +1,5 @@
+import type { IconName } from "@/components/icon";
+
 export type CardListItem = {
   id: string;
   name: string;
@@ -15,18 +17,24 @@ export type CardDetail = CardListItem & {
   typology: CardTypology;
   energy: CardEnergy;
   vulnerability: CardVulnerability;
-  extra_details: string;
+  extra_details: CardExtraDetails;
+};
+
+export type CardExtraDetails = {
+  evolutions: CardListItem[];
+  allies: CardListItem[];
 };
 
 export type CardTypology = {
   name: string;
   icon_url: string;
-  icon_name: string;
+  icon_name: IconName;
 };
 
 export type CardEnergy = {
   name: string;
   icon_url: string;
+  icon_name: IconName;
 };
 
 export type CardVulnerability = {
@@ -35,9 +43,7 @@ export type CardVulnerability = {
 };
 
 export const Rarity = {
-  COMMON: "common",
-  UNCOMMON: "uncommon",
-  RARE: "rare",
-  FOIL: "foil",
-  HOLO: "holo",
+  BASE: "pokémon_base",
+  FIRST: "prima_evoluzione",
+  SECOND: "seconda_evoluzione",
 };
