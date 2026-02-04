@@ -1,7 +1,7 @@
 @use "@/assets/styles/colors" as *;
-@use "@/assets/styles/borders" as *;
 @use "@/assets/styles/units" as *;
 @use "@/assets/styles/typography" as *;
+@use "@/assets/styles/borders" as *;
 
 .card {
     height: auto;
@@ -11,7 +11,7 @@
     border-radius: $pm-border-radius-m;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid $color-dark-5;
+    border: $unit-1 solid $color-dark-5;
 
     transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
     cursor: pointer;
@@ -35,8 +35,7 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    height: clamp(140px, 30vw, 190px);
-
+    height: clamp(140px, 30vw, 160px);
 }
 
 .image {

@@ -7,6 +7,7 @@ import { resolveImageFromAssets } from "@/app/images-loader/images-loader.ts";
 export const CardListItem: React.FC<CardListItemProps> = ({
   item,
   className,
+  imageWrapperClassName,
   onClick,
 }) => {
   const handleClick = () => onClick?.(item);
@@ -28,7 +29,7 @@ export const CardListItem: React.FC<CardListItemProps> = ({
       }}
       aria-label={item.name}
     >
-      <div className={classes.imageWrap}>
+      <div className={cn(classes.imageWrap, imageWrapperClassName)}>
         <img className={classes.image} src={imageSrc} alt={item.name} />
       </div>
 
