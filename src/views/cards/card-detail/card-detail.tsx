@@ -11,6 +11,7 @@ import CardBanner from "./components/card-banner";
 import CardComponent from "@/components/card-component";
 import CardDescription from "./components/card-description";
 import BottomSection from "@/views/cards/card-detail/components/bottom-section";
+import ProgressBar from "@/components/progress-bar";
 
 const CardDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -80,6 +81,8 @@ const CardDetail: React.FC = () => {
                     È tutto pronto, inizia la sfida!
                   </div>
                 </div>
+
+                <ProgressBar value={62} labels="right" />
 
                 <div className={classes.buttonContainer}>
                   <Button
