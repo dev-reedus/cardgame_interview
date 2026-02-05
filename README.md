@@ -48,10 +48,10 @@ Every other unhandled route brings to a 404 page.
 
 ## 🛠️ Installation & Setup
 
-1. `git clone https://github.com/dev-reedus/card-game.git`
+1. `git clone https://github.com/dev-reedus/cardgame_interview.git`
 
 
-2. `cd card-game`
+2. `cd cardgame-interview`
 
 
 3. `yarn install`
