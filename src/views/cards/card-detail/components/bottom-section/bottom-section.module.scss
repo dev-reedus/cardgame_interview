@@ -53,6 +53,7 @@
             grid-template-columns: 1fr;
 
             .cardsContainer {
+                flex-direction: column;
                 grid-template-columns: 1fr;
             }
         }
