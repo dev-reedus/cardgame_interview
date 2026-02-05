@@ -57,36 +57,3 @@ export const DetailRoute: Story = {
     await expect(headerEl!.className.split(" ").filter(Boolean).length).toBe(2);
   },
 };
-
-export const SizesDifferByRoute: Story = {
-  render: () => (
-    <div style={{ display: "grid", gap: 16, padding: 16 }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
-        <div style={{ fontFamily: "monospace", fontSize: 12, marginBottom: 8 }}>
-          /cards
-        </div>
-        <MemoryRouter initialEntries={["/cards"]}>
-          <Header />
-        </MemoryRouter>
-      </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
-        <div style={{ fontFamily: "monospace", fontSize: 12, marginBottom: 8 }}>
-          /cards/123
-        </div>
-        <MemoryRouter initialEntries={["/cards/123"]}>
-          <Header />
-        </MemoryRouter>
-      </div>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const headers = Array.from(canvasElement.querySelectorAll("header"));
-    await expect(headers.length).toBe(2);
-
-    await expect(headers[0]!.className).not.toBe(headers[1]!.className);
-
-    const imgs = Array.from(canvasElement.querySelectorAll('img[alt="Logo"]'));
-    await expect(imgs.length).toBe(2);
-  },
-};

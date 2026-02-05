@@ -16,7 +16,7 @@ const CardListItem: React.FC<CardListItemProps> = ({
   const imageSrc = resolveImageFromAssets(item.image_url, "logo.png");
 
   return (
-    <article
+    <div
       className={cn(
         classes.card,
         { [classes.cardNonInteractable]: !isInteractable },
@@ -48,7 +48,7 @@ const CardListItem: React.FC<CardListItemProps> = ({
           dangerouslySetInnerHTML={{ __html: item.short_description }}
         />
       </div>
-    </article>
+    </div>
   );
 };
 
