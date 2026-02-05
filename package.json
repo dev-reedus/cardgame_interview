@@ -1,45 +1,61 @@
 {
-    "name": "card-game",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc -b && vite build",
-        "lint": "eslint .",
-        "preview": "vite preview"
-    },
-    "dependencies": {
-        "@tailwindcss/vite": "^4.1.18",
-        "classnames": "^2.5.1",
-        "react": "^19.2.0",
-        "react-dom": "^19.2.0",
-        "react-router-dom": "^7.13.0",
-        "storybook": "^10.2.4",
-        "tailwindcss": "^4.1.18",
-        "uuid": "^13.0.0"
-    },
-    "devDependencies": {
-        "@eslint/js": "^9.39.1",
-        "@types/node": "^24.10.1",
-        "@types/react": "^19.2.5",
-        "@types/react-dom": "^19.2.3",
-        "@vitejs/plugin-react": "^5.1.1",
-        "eslint": "^9.39.1",
-        "eslint-plugin-react-hooks": "^7.0.1",
-        "eslint-plugin-react-refresh": "^0.4.24",
-        "globals": "^16.5.0",
-        "msw": "^2.12.7",
-        "prettier": "^3.8.1",
-        "sass": "^1.97.3",
-        "typescript": "~5.9.3",
-        "typescript-eslint": "^8.46.4",
-        "vite": "^7.2.4",
-        "vite-plugin-svgr": "^4.5.0"
-    },
-    "msw": {
-        "workerDirectory": [
-            "public"
-        ]
-    }
+  "name": "card-game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@storybook/react-vite": "^10.2.6",
+    "@tailwindcss/vite": "^4.1.18",
+    "classnames": "^2.5.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.0",
+    "storybook": "^10.2.4",
+    "tailwindcss": "^4.1.18",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.0.0",
+    "@eslint/js": "^9.39.1",
+    "@storybook/addon-a11y": "^10.2.6",
+    "@storybook/addon-docs": "^10.2.6",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-vitest": "^10.2.6",
+    "@storybook/test": "^8.6.15",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/browser-playwright": "^4.0.18",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "eslint-plugin-storybook": "^10.2.6",
+    "globals": "^16.5.0",
+    "msw": "^2.12.7",
+    "msw-storybook-addon": "^2.0.6",
+    "playwright": "^1.58.1",
+    "prettier": "^3.8.1",
+    "sass": "^1.97.3",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^7.2.4",
+    "vite-plugin-svgr": "^4.5.0",
+    "vitest": "^4.0.18"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }
