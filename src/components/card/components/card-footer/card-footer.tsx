@@ -31,6 +31,7 @@ const CardFooter: React.FC<CardFooterProps> = ({
             className={classes.customBadge}
             variant="filled"
             icon={typology.icon_name}
+            data-testid="typology-badge"
           />
         )}
         {energy && (
@@ -38,6 +39,7 @@ const CardFooter: React.FC<CardFooterProps> = ({
             className={classes.customBadge}
             variant="filled"
             icon={energy.icon_name}
+            data-testid="energy-badge"
           />
         )}
       </div>

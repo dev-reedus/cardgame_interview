@@ -1,8 +1,8 @@
 import * as React from "react";
-import classes from "./card-component.module.scss";
+import classes from "./card.module.scss";
 import { resolveImageFromAssets } from "@/app/images-loader/images-loader.ts";
 
-import type { CardPreviewPanelProps } from "./card-component.model.ts";
+import type { CardPreviewPanelProps } from "./card.model.ts";
 import CardStatItem from "./components/card-stat-item";
 import CardHeader from "./components/card-header";
 import CardBody from "./components/card-body";
@@ -35,7 +35,11 @@ const CardPreviewPanel: React.FC<CardPreviewPanelProps> = ({
         <img className={classes.image} src={src} alt={card.name} />
 
         {cardStatus() === "expired" && (
-          <div className={classes.expiredOverlay} aria-hidden="true">
+          <div
+            className={classes.expiredOverlay}
+            aria-hidden="true"
+            data-testid="card-expired-overlay"
+          >
             <span className={classes.expiredIcon}>
               <Icon name="skull" title="Expired" />
             </span>
