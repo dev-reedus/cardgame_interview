@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./loader.module.scss";
 import type { LoaderProps } from "./loader.model.ts";
 import { Icon } from "@/components/icon";
+import cn from "classnames";
 
 const Loader: React.FC<LoaderProps> = ({
   open,
@@ -12,7 +13,7 @@ const Loader: React.FC<LoaderProps> = ({
 
   return (
     <div
-      className={`${classes.backdrop}${className ? ` ${className}` : ""}`}
+      className={cn(classes.backdrop, className)}
       role="status"
       aria-live="polite"
       aria-label={label}
