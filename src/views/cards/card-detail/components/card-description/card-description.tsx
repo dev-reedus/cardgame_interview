@@ -20,7 +20,7 @@ const CardDescription: React.FC<CardDescriptionProps> = ({
           iconTitle="Go back"
           type="button"
           className={classes.backButton}
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/cards")}
         ></Button>
       </div>
       <h2 className={classes.name}>

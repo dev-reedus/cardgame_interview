@@ -62,6 +62,20 @@
             padding: $unit-64;
             border-radius: $pm-border-radius-m;
 
+            .cardErrorPlaceholder {
+                padding: $unit-32;
+                box-sizing: border-box;
+                font-size: $font-size-18;
+                line-height: 1.2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+                min-height: 421px;
+                border-radius: $pm-border-radius-m;
+                background-color: $color-dark-5;
+            }
+
             .progressBarContainer {
 
                 .placeholder {

@@ -1,12 +1,5 @@
 import { jsonFetch } from "./utils.ts";
-import type { CardListItem } from "@/types/card.ts";
-
-export type CardDetail = CardListItem & {
-  longDesc: string;
-  tags: string[];
-};
-
-export type JobStatus = "queued" | "running" | "succeeded" | "failed";
+import type { CardDetail, CardListItem } from "@/types/card.ts";
 
 export const cardsApi = {
   getCardsList() {

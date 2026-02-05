@@ -8,18 +8,33 @@ export const makeJobId = () => `job_${uuidv4()}`;
 const advanceJob = (job: Job): Job => {
   let status: JobStatus = job.status;
   let progress = job.progress;
+  let health_points = job.health_points;
 
   if (status === "queued") {
     status = "running";
     progress = Math.max(progress, 5);
   } else if (status === "running") {
-    const inc = 10 + Math.floor(Math.random() * 16); // 10..25
+    const inc = Math.floor(Math.random() * 20 + 1);
     progress = Math.min(100, progress + inc);
-    if (progress >= 100) status = "succeeded";
+    health_points = Math.max(
+      0,
+      health_points - Math.floor(Math.random() * 20 + 1),
+    );
+
+    if (progress >= 100 || health_points <= 0) {
+      status = "done";
+      progress = 100;
+    }
+
+    // 2% to fail on every tick
+    if (Math.random() < 0.02) {
+      status = "failed";
+    }
   }
 
   return {
     ...job,
+    health_points,
     status,
     progress,
   };
@@ -32,10 +47,16 @@ export const jobHandlers = [
     if (!job) {
       return HttpResponse.json({ message: "Job not found" }, { status: 404 });
     }
+    let response = job;
 
-    const next = advanceJob(job);
-    jobs.set(jobId as string, next);
+    if (job.status === "queued") {
+      const advanced = advanceJob(job);
+      jobs.set(jobId as string, advanced);
+    } else {
+      response = advanceJob(job);
+      jobs.set(jobId as string, response);
+    }
 
-    return HttpResponse.json(next, { status: 200 });
+    return HttpResponse.json(response, { status: 200 });
   }),
 ];

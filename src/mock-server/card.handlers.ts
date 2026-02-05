@@ -12,6 +12,7 @@ const listItems = (): CardListItem[] =>
     image_url,
   }));
 
+// random delay between 500ms and 5s
 const randomDelay = () => Math.floor(Math.random() * (5000 - 500 + 1)) + 500;
 
 export const cardHandlers = [

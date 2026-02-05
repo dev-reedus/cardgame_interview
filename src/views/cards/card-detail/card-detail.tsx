@@ -1,9 +1,14 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import classes from "./card-detail.module.scss";
 import type { CardDetail as CardDetailType } from "@/types/card.ts";
 import { cardsApi } from "@/services/cards-service.ts";
+import {
+  cancelActiveJobPolling,
+  jobsApi,
+  singletonPollJob,
+} from "@/services/jobs-service.ts";
 import { useGlobalLoader } from "@/hooks/useGlobalLoader.ts";
 import Button from "@/components/button";
 import cn from "classnames";
@@ -12,6 +17,7 @@ import CardComponent from "@/components/card-component";
 import CardDescription from "./components/card-description";
 import BottomSection from "@/views/cards/card-detail/components/bottom-section";
 import ProgressBar from "@/components/progress-bar";
+import type { Job } from "@/types/job.ts";
 
 const CardDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +25,9 @@ const CardDetail: React.FC = () => {
   const loader = useGlobalLoader();
 
   const [card, setCard] = useState<CardDetailType | null>(null);
+  const [job, setJob] = useState<Job | null>(null);
+  const [isStarting, setIsStarting] = useState(false);
+  const [jobError, setJobError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -31,13 +40,83 @@ const CardDetail: React.FC = () => {
       .catch(() => {
         setCard(null);
       });
+
+    return () => {
+      cancelActiveJobPolling();
+      setJob(null);
+      setJobError(null);
+      setIsStarting(false);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const hasEvolutions = !!card?.extra_details.evolutions.length;
   const hasAllies = !!card?.extra_details.allies.length;
 
+  const reset = () => {
+    setJob(null);
+    setJobError(null);
+    setIsStarting(false);
+  };
+
+  const onCTAClick = () => {
+    if (job?.status === "done" || job?.status === "failed") {
+      reset();
+    } else {
+      handleFightSimulation();
+    }
+  };
+
+  const cardUpdated = useMemo<CardDetailType | null>(() => {
+    if (!card) return null;
+
+    return {
+      ...card,
+      health_points: job?.health_points ?? card?.health_points,
+    };
+  }, [card, job]);
+
+  const buttonText = useMemo<string>(() => {
+    const status = job?.status;
+    const hasHealth = !!cardUpdated?.health_points;
+
+    if (status === "done" && hasHealth) return "Vittoria, lotta ancora!";
+    if (status === "done" && !hasHealth) return "Hai perso, riprova!";
+    if (status === "running") return "Sta combattendo...";
+    if (status === "failed") return "Simula nuovamente";
+    return "Simula combattimento";
+  }, [cardUpdated, job]);
+
+  async function handleFightSimulation() {
+    if (!id) return;
+
+    setJobError(null);
+    setIsStarting(true);
+    setJob(null);
+
+    // keep one poller even on multiple clicks
+    cancelActiveJobPolling();
+
+    try {
+      const jobId = await jobsApi.startJob(id);
+
+      const finalJob = await singletonPollJob(jobId, {
+        intervalMs: 2000,
+        onUpdate: (j) => setJob(j),
+      });
+      if (finalJob.status === "failed") {
+        setJobError("oops... qualcosa è andato storto");
+      }
+    } catch {
+      setJobError("Errore di rete. Riprova!");
+    } finally {
+      setIsStarting(false);
+    }
+  }
+
   if (!card) {
+    if (loader.open) return null;
+
     return (
       <div className={cn(classes.page, classes.emptyState)}>
         <div className={cn(classes.container, classes.emptyState)}>
@@ -50,7 +129,10 @@ const CardDetail: React.FC = () => {
             onClick={() => navigate("/cards")}
           ></Button>
           <div className={classes.emptyStateCard}>
-            <p>We couldn’t find this card. Please go back and try again.</p>
+            <p>
+              Non siamo riusciti a trovare questa carta. Torna indietro e
+              riprova.
+            </p>
           </div>
         </div>
       </div>
@@ -74,23 +156,40 @@ const CardDetail: React.FC = () => {
 
             <section>
               <div className={classes.cardContainer}>
-                <CardComponent card={card} />
-
-                <div className={classes.progressBarContainer}>
-                  <div className={classes.placeholder}>
-                    È tutto pronto, inizia la sfida!
+                {jobError ? (
+                  <div className={classes.cardErrorPlaceholder}>
+                    <p>{jobError}</p>
                   </div>
-                </div>
+                ) : (
+                  <>
+                    {cardUpdated && <CardComponent card={cardUpdated} />}
 
-                <ProgressBar value={62} labels="right" />
+                    {!job && (
+                      <div className={classes.progressBarContainer}>
+                        <div className={classes.placeholder}>
+                          È tutto pronto, inizia la sfida!
+                        </div>
+                      </div>
+                    )}
+
+                    {job && (
+                      <ProgressBar value={job?.progress ?? 0} labels="right" />
+                    )}
+                  </>
+                )}
 
                 <div className={classes.buttonContainer}>
                   <Button
-                    onClick={() => console.log("click")}
+                    onClick={onCTAClick}
                     size="md"
                     className={classes.button}
+                    disabled={
+                      isStarting ||
+                      job?.status === "queued" ||
+                      job?.status === "running"
+                    }
                   >
-                    SIMULA COMBATTIMENTO
+                    {buttonText}
                   </Button>
                 </div>
               </div>
