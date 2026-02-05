@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+<div align="center">
+  <a href="https://card-game.reedus.dev">
+    <img src="public/logo.svg" alt="Logo" width="100" height="100">
+  </a>
+  <h1 align="center">Card game</h1>
+  <p align="center">
+    An assignment for a Frontend position
+    <br />
+    <br />
+    <a href="https://card-game.reedus.dev">View Demo</a>
+  </p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive Pokémon card game built with Vite, React, and TypeScript.
+This project is designed for scalability, developer experience, and smooth UI prototyping with Storybook and MSW for
+mocking API data.
 
-Currently, two official plugins are available:
+## 🎯 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- List card deck
+- View card details
+- Simulate a card fight (with 3 different results: win, lose, error)
 
-## React Compiler
+## 💬 How to Use
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+From card deck page(home), clicking a card redirects to card details page. <br />
+Here with a button you can simulate a fight between the card and a random opponent.<br />
+The start fight button simulate a polling request, that returns fight steps. Every tick has a 2% possibility to bring to
+a
+failure.<br/>
+The last two cards, simulate a details fetch error.
+Every other unhandled route brings to a 404 page.
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Storybook
+- MSWJS
+- Package Manager: yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📋 Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js (v.22.17.0 or higher)
+- yarn (preferred)
+    - if you don't have it, you can use `npm install -g yarn` to install it globally
+- git (of course)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Installation & Setup
+
+1. `git clone https://github.com/dev-reedus/card-game.git`
+
+
+2. `cd card-game`
+
+
+3. `yarn install`
+
+
+4. `yarn dev`
+
+
+5. open your app at http://localhost:5173
+
+
+6. `yarn storybook` to start storybook
+
+You can also deploy it in a container by running `run.sh` script, it will create a docker image and run it on port 8085.
+
+## 📁 Project Structure
+
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+card-game/
+├── .storybook/         # Storybook configuration
+├── src/
+│   ├── app/            # App initialization
+│   ├── assets/         # Global styles/variables
+│   ├── components/     # React components
+│   ├── views/          # Views components
+│   ├── hooks/          # Custom hooks
+│   ├── mock-server/    # MSWJS handlers for mocks
+│   ├── services/       # API services
+│   └── types/          # TypeScript global types
+└── public/             # Static assets
 ```

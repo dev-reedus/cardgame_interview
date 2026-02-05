@@ -14,13 +14,11 @@
   },
   "dependencies": {
     "@storybook/react-vite": "^10.2.6",
-    "@tailwindcss/vite": "^4.1.18",
     "classnames": "^2.5.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0",
     "storybook": "^10.2.4",
-    "tailwindcss": "^4.1.18",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
