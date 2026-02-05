@@ -15,6 +15,7 @@ const CardDescription: React.FC<CardDescriptionProps> = ({
     <div className={classes.wrap}>
       <div>
         <Button
+          data-testid="back-button"
           size="md"
           icon="arrow-back"
           iconTitle="Go back"

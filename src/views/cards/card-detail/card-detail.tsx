@@ -13,7 +13,7 @@ import { useGlobalLoader } from "@/hooks/useGlobalLoader.ts";
 import Button from "@/components/button";
 import cn from "classnames";
 import CardBanner from "./components/card-banner";
-import CardComponent from "@/components/card-component";
+import CardComponent from "@/components/card";
 import CardDescription from "./components/card-description";
 import BottomSection from "@/views/cards/card-detail/components/bottom-section";
 import ProgressBar from "@/components/progress-bar";
@@ -127,6 +127,7 @@ const CardDetail: React.FC = () => {
             type="button"
             className={classes.backButton}
             onClick={() => navigate("/cards")}
+            data-testid="back-button"
           ></Button>
           <div className={classes.emptyStateCard}>
             <p>
@@ -183,6 +184,7 @@ const CardDetail: React.FC = () => {
                     onClick={onCTAClick}
                     size="md"
                     className={classes.button}
+                    role="button"
                     disabled={
                       isStarting ||
                       job?.status === "queued" ||
