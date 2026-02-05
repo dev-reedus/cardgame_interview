@@ -7,4 +7,4 @@ export type BadgeProps = {
   children?: React.ReactNode;
   className?: string;
   variant?: "filled" | "translucent";
-};
+} & React.HTMLAttributes<HTMLSpanElement>;

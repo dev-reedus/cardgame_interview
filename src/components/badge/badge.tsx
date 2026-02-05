@@ -11,11 +11,12 @@ const Badge: React.FC<BadgeProps> = ({
   icon,
   iconPosition = "left",
   variant = "filled",
+  ...rest
 }) => {
   const hasValue = value !== undefined;
 
   const iconNode = icon ? (
-    <span className={classes.icon}>
+    <span className={classes.icon} {...rest}>
       <Icon name={icon} />
     </span>
   ) : null;
