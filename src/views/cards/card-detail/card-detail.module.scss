@@ -103,4 +103,17 @@
     .customImageWrapper {
         height: clamp(180px, 30vw, 230px);
     }
+
+    @media (max-width: 560px) {
+
+        .container {
+            padding: $unit-16;
+        }
+        .mainGrid {
+            .cardContainer {
+                padding: $unit-64 $unit-24;
+            }
+        }
+    }
+
 }
