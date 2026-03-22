@@ -6,7 +6,7 @@ echo ""
 docker build --build-arg VITE_MOCK_ENABLED=true -t card-game .
 
 echo "*****************************"
-echo "* Running ui-chatbot container on port 8085 *"
+echo "* Running card-game container on port 8085 *"
 echo "*****************************"
 echo ""
 
