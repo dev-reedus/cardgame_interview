@@ -1,4 +1,4 @@
-FROM node:22.17.0-alpine AS builder
+FROM node:22.23.4-alpine AS builder
 
 ARG VITE_MOCK_ENABLED=false
 ENV VITE_MOCK_ENABLED=$VITE_MOCK_ENABLED
